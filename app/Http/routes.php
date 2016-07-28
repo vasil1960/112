@@ -10,10 +10,11 @@ Route::get('/api/signali',['as'=>'signalidata','uses'=>'DatatablesController@sig
 
 //Route::get('/signali/iag/home',['as'=>'signali.iag.home','uses'=>'HomeController@index']);
 //Route::resource('signali/iag','SignaliController');
-Route::get('/signali/iag/home',['as'=>'home','uses'=>'IagController@home']);
+Route::get('/signali/iag/home',['as'=>'signali.iag.home','uses'=>'IagController@home']);
 //iag user
 Route::resource('signali/iag','IagController');
 Route::resource('signali/report', 'ReportController');
+Route::resource('signali/spravki', 'SpravkaController');
 //Route::get('signali/report/create/{report}', 'ReportController@create');
 //Route::get('signali/report/create/{report}', 'ReportController@create');
 //Route::post('signali/report/store', 'ReportController@store');

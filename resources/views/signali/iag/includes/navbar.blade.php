@@ -42,15 +42,17 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="#">
+                            <a href="/signali/spravki/?sid={{ request('sid') }}" >
                                 Справка 1
                             </a>
                         </li>
+
                         <li>
                             <a href="#">
                                 Справка 2
                             </a>
                         </li>
+
                         <li>
                             <a href="#">
                                 Справка 3

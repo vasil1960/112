@@ -9,8 +9,6 @@ use App\Signal;
 use App\Signalfrom;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateSignalRequest;
-
-//use App\Http\Requests;
 use Session;
 
 class IagController extends Controller
