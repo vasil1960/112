@@ -39,7 +39,8 @@ class SpravkaController extends Controller
             DB::raw('sum(reports.a_fire) as a_fire_count'),
           ])
             ->join('reports','reports.signal_id','=','signali.id')
-//            ->where('glav_pod','>',1)
+//            ->whereBetween('glav_pod',[1,117])
+//            ->orWhereBetween('pod_id',[20000,20720])
             ->groupBy('glav_pod')
             ->get();
 
