@@ -37,7 +37,9 @@
         @include('signali.iag.includes.navbar')
     <div class="container">
 
-        @include('flash::message')
+        <div class="row">
+            @include('flash::message')
+        </div>
 
         @yield('content')
 

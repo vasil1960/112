@@ -119,10 +119,12 @@
                         {{ $report->note ? $report->note : 'Няма забележка' }}
                     </li>
 
-                    <li class="list-group-item">
-                        <p class="text-center"><a class="btn btn-primary" href="/signali/report/{{ $report->id }}/edit?sid={{ Session::get('iaguser')->ID }}">Редактиране на отчета</a></p>
-                    </li>
-
+                    @if((Session::get('iaguser')->Access112 == 2 && Session::get('iaguser')->AccessPodelenia == 1) ||
+                    (Session::get('iaguser')->Access112 == 2 && Session::get('iaguser')->AccessPodelenia == 115))
+                        <li class="list-group-item">
+                            <p class="text-center"><a class="btn btn-primary" href="/signali/report/{{ $report->id }}/edit?sid={{ Session::get('iaguser')->ID }}">Редактиране на отчета</a></p>
+                        </li>
+                    @endif
 
                 </ul>
             </div>

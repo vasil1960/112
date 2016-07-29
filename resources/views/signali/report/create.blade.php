@@ -364,12 +364,14 @@
 
 
 
-
-                    <div class="form-group">
-                        <div class="col-md-9 col-md-offset-3">
-                             <button class="btn btn-primary">Отчет</button>
+                    @if((Session::get('iaguser')->Access112 == 2 && Session::get('iaguser')->AccessPodelenia == 1) ||
+                               (Session::get('iaguser')->Access112 == 2 && Session::get('iaguser')->AccessPodelenia == 115))
+                        <div class="form-group">
+                            <div class="col-md-9 col-md-offset-3">
+                                 <button class="btn btn-primary">Отчет</button>
+                            </div>
                         </div>
-                    </div>
+                    @endif
 
                 </form>
             </div>

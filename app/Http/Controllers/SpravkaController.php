@@ -16,16 +16,63 @@ class SpravkaController extends Controller
      */
     public function index()
     {
+        $signali = Signal::select(['glav_pod',
+            DB::raw('count(*) as signal_count'),
+            DB::raw('sum(reports.falshiv) as falshiv_count'),
 
-        $signali = Signal::select(DB::raw('glav_pod','report.falshiv as falshiv'))
+            DB::raw('sum(reports.s_dobiv) as s_dobiv_count'),
+            DB::raw('sum(reports.s_transport) as s_transport_count'),
+            DB::raw('sum(reports.s_store) as s_store_count'),
+            DB::raw('sum(reports.s_hunt) as s_hunt_count'),
+            DB::raw('sum(reports.s_fire) as s_fire_count'),
+
+            DB::raw('sum(reports.n_dobiv) as n_dobiv_count'),
+            DB::raw('sum(reports.n_transport) as n_transport_count'),
+            DB::raw('sum(reports.n_store) as n_store_count'),
+            DB::raw('sum(reports.n_hunt) as n_hunt_count'),
+            DB::raw('sum(reports.n_fire) as n_fire_count'),
+
+            DB::raw('sum(reports.a_dobiv) as a_dobiv_count'),
+            DB::raw('sum(reports.a_transport) as a_transport_count'),
+            DB::raw('sum(reports.a_store) as a_store_count'),
+            DB::raw('sum(reports.a_hunt) as a_hunt_count'),
+            DB::raw('sum(reports.a_fire) as a_fire_count'),
+          ])
             ->join('reports','reports.signal_id','=','signali.id')
-            ->where('glav_pod','>',1)
+//            ->where('glav_pod','>',1)
             ->groupBy('glav_pod')
-            ->count();
+            ->get();
 
+
+        $signali_sum = Signal::select(['glav_pod',
+            DB::raw('count(*) as signal_count'),
+            DB::raw('sum(reports.falshiv) as falshiv_count'),
+
+            DB::raw('sum(reports.s_dobiv) as s_dobiv_count'),
+            DB::raw('sum(reports.s_transport) as s_transport_count'),
+            DB::raw('sum(reports.s_store) as s_store_count'),
+            DB::raw('sum(reports.s_hunt) as s_hunt_count'),
+            DB::raw('sum(reports.s_fire) as s_fire_count'),
+
+            DB::raw('sum(reports.n_dobiv) as n_dobiv_count'),
+            DB::raw('sum(reports.n_transport) as n_transport_count'),
+            DB::raw('sum(reports.n_store) as n_store_count'),
+            DB::raw('sum(reports.n_hunt) as n_hunt_count'),
+            DB::raw('sum(reports.n_fire) as n_fire_count'),
+
+            DB::raw('sum(reports.a_dobiv) as a_dobiv_count'),
+            DB::raw('sum(reports.a_transport) as a_transport_count'),
+            DB::raw('sum(reports.a_store) as a_store_count'),
+            DB::raw('sum(reports.a_hunt) as a_hunt_count'),
+            DB::raw('sum(reports.a_fire) as a_fire_count'),
+        ])
+            ->join('reports','reports.signal_id','=','signali.id')
+//            ->where('glav_pod','>',1)
+//            ->groupBy('glav_pod')
+            ->get();
 //        dd($signali);
 
-        return view('signali.spravki.index',compact('signali'));
+        return view('signali.spravki.index',compact('signali','signali_sum'));
     }
 
     /**

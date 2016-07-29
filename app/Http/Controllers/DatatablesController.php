@@ -6,7 +6,7 @@ use App\Iagsession;
 use App\Signal;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-
+use Session;
 use Yajra\Datatables\Datatables;
 
 use App\Http\Requests;
@@ -94,10 +94,15 @@ class DatatablesController extends Controller
              })
 
             //add columns
+
              ->addColumn('edit_action', function ($signal) {
-                 return '<a href="/signali/iag/'.$signal->id.'/edit?sid='.request('sid').'" class="btn btn-xs btn-primary">
+                if((Session::get('iaguser')->Access112 == 2 && Session::get('iaguser')->AccessPodelenia == 1) ||
+                    (Session::get('iaguser')->Access112 == 2 && Session::get('iaguser')->AccessPodelenia == 115))
+                {
+                    return '<a href="/signali/iag/' . $signal->id . '/edit?sid=' . request('sid') . '" class="btn btn-xs btn-primary">
                               <i class="glyphicon glyphicon-edit"></i>
                         </a>';
+                }
              })
 
              ->addColumn('show_action', function ($signal) {
@@ -105,10 +110,16 @@ class DatatablesController extends Controller
                              <i class="glyphicon glyphicon-option-horizontal"></i>
                          </a>';
              })
+
              ->addColumn('report_action', function ($signal) {
-                 return '<a href="/signali/report/create/?sid='.request('sid').'&sigid='.$signal->id.'" class="btn btn-xs btn-primary">
+                 if((Session::get('iaguser')->Access112 == 2 && Session::get('iaguser')->AccessPodelenia == 1) ||
+                     (Session::get('iaguser')->Access112 == 2 && Session::get('iaguser')->AccessPodelenia == 115))
+                 {
+                     return '<a href="/signali/report/create/?sid='.request('sid').'&sigid='.$signal->id.'" class="btn btn-xs btn-primary">
                              <i class="glyphicon glyphicon-pencil"></i>
                          </a>';
+                 }
+
              })
 
             ->addColumn('otchet_action', function ($signal) {
