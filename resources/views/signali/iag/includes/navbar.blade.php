@@ -43,13 +43,13 @@
                     <ul class="dropdown-menu">
                         <li>
                             <a href="/signali/spravki/?sid={{ request('sid') }}" >
-                                Справка 1
+                                РДГ-та
                             </a>
                         </li>
 
                         <li>
-                            <a href="#">
-                                Справка 2
+                            <a href="/signali/spravki/dp?sid={{ request('sid') }}">
+                                ДП-та
                             </a>
                         </li>
 

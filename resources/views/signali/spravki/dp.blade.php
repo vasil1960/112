@@ -16,7 +16,7 @@
     <div class="row">
         <div class="panel panel-default">
             <div class="panel-body">
-                <table class="table table-condensed">
+                <table class="table table-condensed table-bordered">
                     <thead>
                     <tr>
                         <th rowspan="2">
@@ -26,9 +26,9 @@
                         <th class="text-center" rowspan="2">Сиг-<br>нали</th>
                         <th class="text-center" rowspan="2">Фал-<br>шиви</th>
 
-                        <th class="text-center table-bordered" colspan="5" >Получени сигнали за:</th>
-                        <th class="text-center table-bordered" colspan="5">Установени нарушения за:</th>
-                        <th class="text-center table-bordered" colspan="5">Съставени актове за:</th>
+                        <th class="text-center" colspan="5" >Получени сигнали за:</th>
+                        <th class="text-center" colspan="5">Установени нарушения за:</th>
+                        <th class="text-center" colspan="5">Съставени актове за:</th>
                     </tr>
                     <tr>
                         <th class="text-center">до-<br>бив</th>
@@ -53,7 +53,7 @@
                     <tbody>
                     @foreach($signali as $signal)
                         <tr>
-                            <td><a href="/signali/spravki/podelenia/{{$signal->glav_pod}}/?sid={{ Session::get('iaguser')->ID }}">{{ $signal->RDG->Pod_NameBg }}</a></td>
+                            <td><a href="/signali/spravki/dp_podelenie/{{$signal->DP_ID}}/?sid={{ Session::get('iaguser')->ID }}">{{ $signal->DP }}</a></td>
                             {{--<td>{{ $signal->podelenie->Pod_NameBg }}</td>--}}
                             <td class="text-center">{{ $signal->signal_count }}</td>
                             <td class="text-center">{{ $signal->falshiv_count }}</td>
