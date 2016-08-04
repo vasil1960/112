@@ -26,7 +26,7 @@
                         <th class="text-center" rowspan="2">Сиг-<br>нали</th>
                         <th class="text-center" rowspan="2">Фал-<br>шиви</th>
 
-                        <th class="text-center" colspan="5" >Получени сигнали за:</th>
+                        <th class="text-center" colspan="5">Получени сигнали за:</th>
                         <th class="text-center" colspan="5">Установени нарушения за:</th>
                         <th class="text-center" colspan="5">Съставени актове за:</th>
                     </tr>
@@ -53,7 +53,8 @@
                     <tbody>
                     @foreach($signali as $signal)
                         <tr>
-                            <td><a href="/signali/spravki/dp_podelenie/{{$signal->DP_ID}}/?sid={{ Session::get('iaguser')->ID }}">{{ $signal->DP }}</a></td>
+                            <td>{{ $signal->DP }}</td>
+                            {{--<td><a href="/signali/spravki/dp_podelenie/{{$signal->DP_ID}}/?sid={{ Session::get('iaguser')->ID }}">{{ $signal->DP }}</a></td>--}}
                             {{--<td>{{ $signal->podelenie->Pod_NameBg }}</td>--}}
                             <td class="text-center">{{ $signal->signal_count }}</td>
                             <td class="text-center">{{ $signal->falshiv_count }}</td>

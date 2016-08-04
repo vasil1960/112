@@ -94,9 +94,11 @@ class IagController extends Controller
     {
         $signal = Signal::findOrFail($id);
         $signal->update($request->all());
+
+//        return redirect()->route('signali.iag',[$signal->id, 'sid='.Session::get('iaguser')->ID]);
+
         flash()->overlay('Сигналът е редактиран успешно !','Успешна редакция !');
-        return redirect()->route('signali.iag.edit',[$signal->id]);
-//        return back();
+        return back();
     }
 
     /**
